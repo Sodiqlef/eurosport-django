@@ -15,9 +15,9 @@
               <div class="col-lg-7">
                 <div class="header-text">
                   <h6>Welcome To Eurosport</h6>
-                  <h4><em>Check</em> all latest transfer news Here</h4>
+                  <h4><em>Check</em> all latest news Here</h4>
                   <div class="main-button">
-                    <a href="browse.html">Transfer News</a>
+                    <a href="{% url 'news' %}">Stay Updated</a>
                   </div>
                 </div>
               </div>
@@ -42,7 +42,7 @@
 
                   <div class="col-lg-3 col-sm-6">
 
-                    <a href="{% url 'match_details' match.pk %}"><div class="item">
+                    <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
 
                       <img src="{% static 'images/popular-01.jpg' %}" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
@@ -56,7 +56,7 @@
 
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html" disabled>Watch Live</a>
+                      <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}" >Check Stats</a>
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
                   {% for match in matches %}
                   {% if not match.played %}
                   <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'match_details' match.pk %}"><div class="item">
+                    <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
                       <img src="{% static 'images/popular-01.jpg' %}" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
                       <ul>
@@ -95,21 +95,9 @@
                   {% endif %}
                   {% endfor %}
 
-                   <!--<div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-02.jpg" alt="">
-                      <h4>PubG<br><span>Battle S</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>-->
-
-
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html">See All</a>
+                      <a href="{% url 'upcoming' %}">See All</a>
                     </div>
                   </div>
                 </div>
@@ -133,7 +121,7 @@
                   {% for match in matches %}
                   {% if match.played %}
                   <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'match_details' match.pk %}"><div class="item">
+                    <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
                       <img src="{% static 'images/popular-01.jpg' %}" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
                       <ul>
@@ -146,21 +134,9 @@
                   {% endif %}
                   {% endfor %}
 
-                   <!--<div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-02.jpg" alt="">
-                      <h4>PubG<br><span>Battle S</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>-->
-
-
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html">See All</a>
+                      <a href="{% url 'played' %}">See All</a>
                     </div>
                   </div>
                 </div>
@@ -212,12 +188,13 @@
 
             <div class="col-lg-12">
               <div class="main-button">
-                <a href="profile.html">Check Other Divisions Table</a>
+                <a href="{% url 'standings' %}">Check Full Standing</a>
               </div>
             </div>
           </div>
           <!-- ***** Gaming Library End ***** -->
         </div>
+          <!-- ***** League Table End ***** -->
       </div>
     </div>
   </div>

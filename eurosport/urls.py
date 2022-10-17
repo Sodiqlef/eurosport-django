@@ -20,5 +20,10 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('transfer/', views.transfer, name="transfer"),
+    path('news/', views.news, name="news"),
+    path('standings/', views.standings, name="standings"),
+    path('result/', views.played_matches, name="played"),
+    path('fixtures/', views.upcoming_matches, name="upcoming"),
     re_path(r'^match/(?P<pk>\d+)/$', views.match_details, name='match_details')
 ]

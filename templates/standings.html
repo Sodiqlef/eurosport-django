@@ -1,0 +1,152 @@
+  {% extends 'base.html' %}
+{% load static %}
+
+
+  {% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h6>Welcome To Eurosport</h6>
+                  <h4><em>Check</em> all updated Standings Here</h4>
+                  <div class="main-button">
+                    <a href="#d1">Division 1</a>
+                  </div>
+                    <div class="main-button">
+                    <a href="#d2">Division 2</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+
+
+          <!-- ***** League Table Start ***** -->
+          <div class="gaming-library">
+            <div class="col-lg-12">
+              <div class="heading-section" id="d1">
+                <h4><em>Division 1</em> League Table</h4>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><h4></h4></li>
+                  <li><h4>Pos</h4></li>
+                  <li><h4>Club</h4></li>
+                  <li></li>
+                  <li><h4>Mp</h4></li>
+                  <li><h4>W</h4></li>
+                  <li><h4>D</h4></li>
+                  <li><h4>L</h4></li>
+                  <li><h4>Pts</h4></li>
+
+                </ul>
+              </div>
+              {% for each in d1 %}
+              <div class="item">
+
+
+                <ul>
+                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><span>{{each.pos}}</span></li>
+                  <li><span>{{each.club}}</span></li>
+                  <li></li>
+                  <li><span>{{each.mp}}</span></li>
+                  <li><span>{{each.w}}</span></li>
+                 <li><span>{{each.d}}</span></li>
+                  <li><span>{{each.l}}</span></li>
+                  <li><span>{{each.pts}}</span></li>
+                </ul>
+
+              </div>
+              {% endfor %}
+
+            <div class="col-lg-12">
+              <div class="main-button">
+                <a href="profile.html">Check Previous Division 1 Table</a>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Gaming Library End ***** -->
+        </div>
+          <!-- ***** League Table End ***** -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+
+
+
+      <div class="gaming-library">
+            <div class="col-lg-12">
+              <div class="heading-section" id="d2">
+                <h4><em>Division 2</em> League Table</h4>
+              </div>
+              <div class="item">
+                <ul>
+                  <li ><h4></h4></li>
+                  <li><h4>Pos</h4></li>
+                  <li><h4>Club</h4></li>
+                  <li></li>
+                  <li><h4>Mp</h4></li>
+                  <li><h4>W</h4></li>
+                  <li><h4>D</h4></li>
+                  <li><h4>L</h4></li>
+                  <li><h4>Pts</h4></li>
+
+                </ul>
+              </div>
+
+              {% for each in d2 %}
+              {% if each.season == current %}
+
+              <div class="item">
+
+
+                <ul>
+                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><span>{{each.pos}}</span></li>
+                  <li><span>{{each.club}}</span></li>
+                  <li></li>
+                  <li><span>{{each.mp}}</span></li>
+                  <li><span>{{each.w}}</span></li>
+                 <li><span>{{each.d}}</span></li>
+                  <li><span>{{each.l}}</span></li>
+                  <li><span>{{each.pts}}</span></li>
+                </ul>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+
+            <div class="col-lg-12">
+              <div class="main-button">
+                <a href="profile.html">Check Previous Division 2 Table</a>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Gaming Library End ***** -->
+        </div>
+
+
+
+  </div>
+      </div>
+    </div>
+</div>
+
+  {% endblock %}

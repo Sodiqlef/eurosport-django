@@ -1,0 +1,54 @@
+  {% extends 'base.html' %}
+{% load static %}
+
+
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="row">
+            {% for transfer in all_transfer %}
+            <div class="col-lg-12" style="padding-bottom: 10px">
+
+
+              <div class="main-profile ">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <img src="{% static 'images/profile.jpg' %}" alt="" style="border-radius: 23px;">
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <div class="main-info header-text">
+                      <span>Confirmed</span>
+                      <h4>{{transfer.player_name| upper}}</h4>
+                      <p>{{transfer.player_name| upper}} was transferred to {{transfer.transferred_to}}
+                      on {{transfer.transferred_date}} for ${{transfer.transferred_price}}</p>
+                      <div class="main-border-button">
+                        <a href="#">Browse Player</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <ul>
+                      <li>Transferred from <span>{{transfer.transferred_from}}</span></li>
+                      <li>Transferred to <span> {{transfer.transferred_to}} </span></li>
+                      <li>Transferred date <span>{{transfer.transferred_date}}</span></li>
+                      <li>Transferred price <span>${{transfer.transferred_price}}</span></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            {% endfor %}
+          </div>
+          <!-- ***** Banner End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

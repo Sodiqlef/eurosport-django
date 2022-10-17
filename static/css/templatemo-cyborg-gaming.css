@@ -910,13 +910,16 @@ Gaming Library Style
   margin-bottom: 0px;
 }
 
-.gaming-library .item ul li {
+.gaming-library .item ul {
   margin-top: 15px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .gaming-library .item ul li img {
   margin-top: -30px;
-  width: 50px;
+  margin-bottom: -30px;
+  width: 30px;
 }
 
 .gaming-library .item ul li {

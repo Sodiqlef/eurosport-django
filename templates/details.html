@@ -38,12 +38,21 @@
                     <div 	class="d-lg-none d-xl-none d-xl-block" >
                   <img src="{% static 'images/details-02.jpg' %}" alt="" style="border-radius: 23px;">
                     </div>
-                  <i style="float:left; padding-left: 5%">{{match.home|title}} <b style="padding-right: 10px">{{match.home_goal}}</b>
+                  <i style="float:left; padding-left: 5%">{{match.home|title}}
+                    {% if match.played or match.live %}
+                    <b style="padding-right: 10px">{{match.home_goal}}</b>
+                    {% endif %}
+
+
                     <p><pre class="pre">{{match.home_goal_scorer}}<br><br></pre></p>
+
                   </i>
 
 
-                  <i style="float:right; padding-right: 5%">{{match.away|title}} <b style="padding-left: 10px">{{match.away_goal}}</b>
+                  <i style="float:right; padding-right: 5%">{{match.away|title}}
+                    {% if match.played or match.live %}
+                    <b style="padding-left: 10px">{{match.away_goal}}</b>
+                    {% endif %}
                     <p><pre class="pre">{{match.away_goal_scorer}}<br><br></pre></p>
                   </i>
                 </h4>
@@ -60,7 +69,11 @@
 
                         <div class="left">
                           <h4>{{match.home}}</h4>
+                          {% if match.played or match.live %}
                          <pre> <span>{{match.home_lineup | title}}</span></pre>
+                          {% else %}
+                          <span>Lineup Will be out before the match commences </span>
+                          {% endif %}
                         </div>
                         <ul>
                          {% comment %}
@@ -76,7 +89,11 @@
 
                         <div class="right">
                           <h4>{{match.away}}</h4>
+                          {% if match.played or match.live %}
                          <pre> <span>{{match.away_lineup | title}}</span></pre>
+                          {% else %}
+                          <span>Lineup Will be out before the match commences </span>
+                          {% endif %}
 
                         </div>
                         <ul>
@@ -88,21 +105,86 @@
                     </div>
                     </div>
 
-                  <p style="color: #aaa; padding-left: 5%;">Kick-off time: {{match.date.date}} {{match.date.time}}</p>
-                  <p style="color: #aaa; padding-left: 5%">Stadium: Eurosport Stadium</p>
-                  <p style="color: #aaa; padding-left: 5%">Season: {{match.season}}</p>
-                  <p style="color: #aaa; padding-left: 5%">Competition: {{match.competition}}</p>
-                  <p style="color: #aaa; padding-left: 5%">Man of the match: {{match.mom}}</p>
+                  <p style="color: #aaa; padding-left: 5%; border-bottom: 1px solid grey;">Kick-off time: {{match.date.date}} {{match.date.time}}</p>
+                  <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">Stadium: Eurosport Stadium</p>
+                  <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">Season: {{match.season}}</p>
+                  <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">Competition: {{match.competition}}</p>
+                  <p style="color: #aaa; padding-left: 5%;  ">{% if match.played or match.live %}Man of the match: {{match.mom}} {% endif %}</p>
                   <br>
 
 
                     <div class="col-lg-12">
+                      {% if match.foot_note %}
                       <p>{{match.foot_note}}</p>
+                      {% endif %}
                     </div>
                     <div class="col-lg-12">
-                      <div class="main-border-button">
-                        <a href="#">Check League Standing</a>
-                      </div>
+
+                      <!-- ***** Standing Start ***** -->
+                      <div class="gaming-library">
+            <div class="col-lg-12">
+              <div class="heading-section">
+                <h4><em>Current</em> Standing</h4>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><h4></h4></li>
+                  <li><h4>Pos</h4></li>
+                  <li><h4>Club</h4></li>
+                  <li></li>
+                  <li><h4>Mp</h4></li>
+                  <li><h4>W</h4></li>
+                  <li><h4>D</h4></li>
+                  <li><h4>L</h4></li>
+                  <li><h4>Pts</h4></li>
+
+                </ul>
+              </div>
+              {% for each in home_standing %}
+              <div class="item">
+
+
+                <ul>
+                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><span>{{each.pos}}</span></li>
+                  <li><span>{{each.club}}</span></li>
+                  <li></li>
+                  <li><span>{{each.mp}}</span></li>
+                  <li><span>{{each.w}}</span></li>
+                 <li><span>{{each.d}}</span></li>
+                  <li><span>{{each.l}}</span></li>
+                  <li><span>{{each.pts}}</span></li>
+                </ul>
+
+              </div>
+              {% endfor %}
+
+              {% for each in away_standing %}
+              <div class="item">
+
+
+                <ul>
+                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><span>{{each.pos}}</span></li>
+                  <li><span>{{each.club}}</span></li>
+                  <li></li>
+                  <li><span>{{each.mp}}</span></li>
+                  <li><span>{{each.w}}</span></li>
+                 <li><span>{{each.d}}</span></li>
+                  <li><span>{{each.l}}</span></li>
+                  <li><span>{{each.pts}}</span></li>
+                </ul>
+
+              </div>
+              {% endfor %}
+
+          </div>
+          <div class="main-border-button">
+            <a href="{% url 'standings' %}">Check League Standing</a>
+          </div>
+        </div>
+                      <!-- ***** Standing end ***** -->
+
                     </div>
                   </div>
                 </div>
@@ -122,8 +204,9 @@
               <div class="col-lg-6">
                 <div class="item">
                   <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  {% for each in prev %}
 
+                  {% if prev %}
+                  {% for each in prev %}
                   {% if each.home_goal > each.away_goal %}
                   <b><span class="text-light">{{each.home}}</span></b><b><span>{{each.away}}</span></b>
 
@@ -132,17 +215,28 @@
                     <li><span><i class="fa fa-futbol"></i> {{each.away_goal}}</span></li>
                   </ul>
 
-                  {% else %}
 
+
+                  {% elif each.away_goal > each.home_goal %}
                   <b><span >{{each.home}}</span></b><b><span class="text-light">{{each.away}}</span></b>
 
                   <ul>
                     <li ><span ><i class="fa fa-futbol"></i> {{each.home_goal}}</span></li>
                     <li><span class="text-light"><i class="fa fa-futbol"></i> {{each.away_goal}}</span></li>
                   </ul>
+                  {% else %}
 
+                  <b><span >{{each.home}}</span></b><b><span>{{each.away}}</span></b>
+
+                  <ul>
+                    <li ><span ><i class="fa fa-futbol"></i> {{each.home_goal}}</span></li>
+                    <li><span ><i class="fa fa-futbol"></i> {{each.away_goal}}</span></li>
+                  </ul>,
                   {% endif %}
                   {% endfor %}
+                  {% else %}
+                  <span>No previous meeting</span>
+                  {% endif %}
                 </div>
               </div>
 

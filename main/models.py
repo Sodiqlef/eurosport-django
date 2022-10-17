@@ -28,7 +28,7 @@ class Match(models.Model):
     home_lineup = models.TextField(null=True, blank=True)
     away_lineup = models.TextField(null=True, blank=True)
     mom = models.CharField(max_length=30, null=True, blank=True)
-    foot_note = models.TextField(null=True)
+    foot_note = models.TextField(null=True, blank=True)
     played = models.BooleanField(default=False, blank=True)
     live = models.BooleanField(default=False, blank=True)
 
@@ -43,6 +43,7 @@ class Match(models.Model):
 
 
 class D1Standing(models.Model):
+    season= models.IntegerField(null=True)
     pos = models.IntegerField()
     club = models.CharField(max_length=50)
     mp = models.IntegerField()
@@ -56,6 +57,7 @@ class D1Standing(models.Model):
 
 
 class D2Standing(models.Model):
+    season = models.IntegerField(null=True)
     pos = models.IntegerField()
     club = models.CharField(max_length=50)
     mp = models.IntegerField()
@@ -66,3 +68,35 @@ class D2Standing(models.Model):
 
     def __str__(self):
         return self.club
+
+
+class News(models.Model):
+    subject = models.CharField(max_length=1000)
+    body = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'News'
+
+    def __str__(self):
+        return self.subject
+
+class Transfer(models.Model):
+    player_name = models.CharField(max_length=50)
+    transferred_from = models.CharField(max_length=50)
+    transferred_to = models.CharField(max_length=50)
+    transferred_price = models.CharField(max_length=50, null=True)
+    transferred_date = models.DateField()
+
+    def __str__(self):
+        return  self.player_name
+
+
+class CurrentSeason(models.Model):
+    current_season = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = 'Current Season'
+
+    def __str__(self):
+        return str(self.current_season)
