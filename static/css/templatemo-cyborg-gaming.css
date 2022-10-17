@@ -40,7 +40,14 @@ figure, header, nav, section, article, aside, footer, figcaption {
   border: 0;
   outline: 0;
 }
-
+.pre{
+  
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 50%;
+    color: grey;
+    padding-top: 10px;
+}
 .clearfix:after {
   content: ".";
   display: block;
@@ -204,6 +211,7 @@ p {
 }
 .eurologo{
   color: #60ec90;
+  font-family:Georgia, 'Times New Roman', Times, serif ;
 }
 
 .border-no-active a:hover{
@@ -1314,6 +1322,7 @@ Game Details Style
 .game-details .content .left-info {
   background-color: #27292a;
   border-radius: 23px;
+  height: 100%;
   padding: 30px;
   margin-bottom: 30px;
 }
@@ -1328,10 +1337,13 @@ Game Details Style
 }
 
 .game-details .content .left-info span {
-  color: #666;
+  color: #aaa;
   display: block;
   margin-top: 7px;
   font-weight: 400;
+}
+.game-details .content .left-info pre span {
+  font-family: 'Poppins', sans-serif;
 }
 
 .game-details .content .left-info ul {
@@ -1344,8 +1356,8 @@ Game Details Style
   margin-bottom: 3px;
 }
 
-.game-details .content .left-info ul li:first-child i {
-  color: yellow;
+.game-details .content .left-info ul li:first-child b {
+  color: #60ec90;
 }
 
 .game-details .content .left-info ul li:last-child i {
@@ -1355,8 +1367,24 @@ Game Details Style
 .game-details .content .right-info {
   background-color: #27292a;
   border-radius: 23px;
+  height: 100%;
   padding: 30px;
   margin-bottom: 30px;
+}
+
+.game-details .content .right-info h4 {
+  font-size: 15px;
+  display: block;
+}
+
+.game-details .content .right-info span {
+  color: #aaa;
+  display: block;
+  margin-top: 7px;
+  font-weight: 400;
+}
+.game-details .content .right-info pre span {
+  font-family: 'Poppins', sans-serif;
 }
 
 .game-details .content .right-info ul li {
@@ -1372,8 +1400,8 @@ Game Details Style
   margin-bottom: 12px;
 }
 
-.game-details .content .right-info ul li:first-child i {
-  color: yellow;
+.game-details .content .right-info ul li:first-child b {
+  color: #60ec90;
 } 
 
 .game-details .content .right-info ul li i {
@@ -1440,7 +1468,7 @@ Other Related Style
 }
 
 .other-games ul li:first-child i {
-  color: yellow;
+  color: #60ec90;
 }
 
 .other-games ul li:last-child i {
@@ -1730,3 +1758,4 @@ body {
     width: 16%;
   }
 }
+

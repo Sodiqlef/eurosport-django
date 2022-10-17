@@ -27,9 +27,11 @@ class Match(models.Model):
     date = models.DateTimeField()
     home_lineup = models.TextField(null=True, blank=True)
     away_lineup = models.TextField(null=True, blank=True)
+    mom = models.CharField(max_length=30, null=True, blank=True)
+    foot_note = models.TextField(null=True)
     played = models.BooleanField(default=False, blank=True)
     live = models.BooleanField(default=False, blank=True)
-    mom = models.CharField(max_length=30, null=True, blank=True)
+
 
 
     class Meta:
