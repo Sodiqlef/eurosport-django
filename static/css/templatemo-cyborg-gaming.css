@@ -1,11 +1,3 @@
-/*
-
-TemplateMo 579 Cyborg Gaming
-
-https://templatemo.com/tm-579-cyborg-gaming
-
-*/
-
 /* ---------------------------------------------
 Table of contents
 ------------------------------------------------
@@ -158,10 +150,11 @@ p {
   color: #fff;
 }
 
-.templatemo-item {
+.eurosport-item {
 	max-width: 80px; 
 	border-radius: 23px;
 }
+
 
 .main-button a {
   font-size: 14px;
@@ -785,7 +778,6 @@ Banner Style
 
 .main-banner {
   background-image: url(../images/eurosport.jpg);
-  background-color: red;
   background-position: center center;
   background-size: cover;
   min-height: 380px;
@@ -818,67 +810,73 @@ Most Popular Style
 --------------------------------------------- 
 */
 
-.most-popular {
+.match-list {
   margin-top: 60px;
   padding: 30px;
   background-color: #1f2122;
   border-radius: 23px;
 }
 
-.most-popular .item {
+.match-list .item {
   background-color: #27292a;
   padding: 30px 15px;
   border-radius: 23px;
   margin-bottom: 30px;
 }
 
-.most-popular .item .item {
+.match-list .item .item {
   padding: 0px;
   border-radius: 0px;
   background-color: transparent;
   margin-bottom: 0px;
 }
 
-.most-popular .item img {
+.match-list .item img {
   border-radius: 23px;
 }
 
-.most-popular .item h4 {
+.match-list .item h4 {
   font-size: 15px;
   margin-top: 20px;
   margin-bottom: 0px;
   display: inline-block;
 }
 
-.most-popular .item span {
+.match-list .item span {
   color: #666;
   display: block;
   margin-top: 7px;
   font-weight: 400;
 }
 
-.most-popular .item ul {
+.match-list .item ul {
   float: right;
   margin-top: 20px;
 }
 
-.most-popular .item ul li {
+.match-list .item ul li {
   text-align: right;
   color: #fff;
   font-size: 14px;
 }
 
-.most-popular .item ul li:first-child i {
+.match-list .item ul li:first-child i {
   color: yellow;
 }
 
-.most-popular .item ul li:last-child i {
+.match-list .item ul li:last-child i {
   color: #60ec90;
 }
 
-.most-popular .main-button {
+.match-list .main-button {
+  display: flex;
+  flex-wrap: nowrap;
   text-align: center;
   margin-bottom: -53px;
+}
+
+.match-list .main-button a{
+  padding: 12px 15px;
 }
 
 /* 
@@ -887,20 +885,20 @@ Gaming Library Style
 --------------------------------------------- 
 */
 
-.gaming-library {
+.standings-design {
   margin-top: 60px;
   padding: 30px;
   background-color: #1f2122;
   border-radius: 23px;
 }
 
-.gaming-library .item {
+.standings-design .item {
   border-bottom: 1px solid #27292a;
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
 
-.gaming-library .last-item {
+.standings-design .last-item {
   margin-bottom: 30px;
 }
 
@@ -910,34 +908,34 @@ Gaming Library Style
   margin-bottom: 0px;
 }
 
-.gaming-library .item ul {
+.standings-design .item ul {
   margin-top: 15px;
   display: flex;
   flex-wrap: nowrap;
 }
 
-.gaming-library .item ul li img {
+.standings-design .item ul li img {
   margin-top: -30px;
   margin-bottom: -30px;
   width: 30px;
 }
 
-.gaming-library .item ul li {
+.standings-design .item ul li {
   display: inline-block;
   width: 10%;
 }
 
-.gaming-library .item ul li h4 {
+.standings-design .item ul li h4 {
   font-size: 15px;
   margin-bottom: 5px;
 }
 
-.gaming-library .item ul li span {
+.standings-design .item ul li span {
   color: #aaa;
   font-size: 14px;
 }
 
-.gaming-library .main-button {
+.standings-design .main-button {
   text-align: center;
   margin-bottom: -53px;
 }
@@ -1305,24 +1303,24 @@ Featured Banner Style
 
 /* 
 ---------------------------------------------
-Game Details Style
+Match Details Style
 --------------------------------------------- 
 */
 
-.game-details h2 {
+.match-details h2 {
   font-size: 45px;
   text-transform: uppercase;
   text-align: center;
   margin: 60px 0px;
 }
 
-.game-details .content {
+.match-details .content {
   border-radius: 23px;
   padding: 30px;
   background-color: #1f2122;
 }
 
-.game-details .content .left-info {
+.match-details .content .left-info {
   background-color: #27292a;
   border-radius: 23px;
   height: 100%;
@@ -1330,44 +1328,44 @@ Game Details Style
   margin-bottom: 30px;
 }
 
-.game-details .content .left-info .left {
+.match-details .content .left-info .left {
   float: left;
 }
 
-.game-details .content .left-info h4 {
+.match-details .content .left-info h4 {
   font-size: 15px;
   display: block;
 }
 
-.game-details .content .left-info span {
+.match-details .content .left-info span {
   color: #aaa;
   display: block;
   margin-top: 7px;
   font-weight: 400;
 }
-.game-details .content .left-info pre span {
+.match-details .content .left-info pre span {
   font-family: 'Poppins', sans-serif;
 }
 
-.game-details .content .left-info ul {
+.match-details .content .left-info ul {
   text-align: right;
 }
 
-.game-details .content .left-info ul li {
+.match-details .content .left-info ul li {
   color: #fff;
   font-size: 14px;
   margin-bottom: 3px;
 }
 
-.game-details .content .left-info ul li:first-child b {
+.match-details .content .left-info ul li:first-child b {
   color: #60ec90;
 }
 
-.game-details .content .left-info ul li:last-child i {
+.match-details .content .left-info ul li:last-child i {
   color: #60ec90;
 }
 
-.game-details .content .right-info {
+.match-details .content .right-info {
   background-color: #27292a;
   border-radius: 23px;
   height: 100%;
@@ -1375,22 +1373,22 @@ Game Details Style
   margin-bottom: 30px;
 }
 
-.game-details .content .right-info h4 {
+.match-details .content .right-info h4 {
   font-size: 15px;
   display: block;
 }
 
-.game-details .content .right-info span {
+.match-details .content .right-info span {
   color: #aaa;
   display: block;
   margin-top: 7px;
   font-weight: 400;
 }
-.game-details .content .right-info pre span {
+.match-details .content .right-info pre span {
   font-family: 'Poppins', sans-serif;
 }
 
-.game-details .content .right-info ul li {
+.match-details .content .right-info ul li {
   display: inline-block;
   width: 23%;
   text-align: center;
@@ -1398,164 +1396,100 @@ Game Details Style
   color: #fff;
 }
 
-.game-details .content .right-info ul li i {
+.match-details .content .right-info ul li i {
   display: block;
   margin-bottom: 12px;
 }
 
-.game-details .content .right-info ul li:first-child b {
+.match-details .content .right-info ul li:first-child b {
   color: #60ec90;
 } 
 
-.game-details .content .right-info ul li i {
+.match-details .content .right-info ul li i {
   color: #60ec90;
 }
 
-.game-details .main-border-button {
+.match-details .main-border-button {
   margin-top: 35px;
 }
 
-.game-details .main-border-button a {
+.match-details .main-border-button a {
   text-align: center;
   width: 100%;
 } 
 
 /* 
 ---------------------------------------------
-Other Related Style
+Previous Meeting Style
 --------------------------------------------- 
 */
 
-.other-games {
+.previous-meeting {
   border-radius: 23px;
   padding: 30px 30px 0px 30px;
   background-color: #1f2122;
   margin-top: 60px;
 }
 
-.other-games .item {
+.previous-meeting .item {
   position: relative;
   border-bottom: 1px solid #27292a;
   padding-bottom: 52px;
   margin-bottom: 30px;
 }
 
-.other-games .item img {
+.previous-meeting .item img {
   float: left;
   margin-right: 15px;
 }
 
-.other-games .item h4 {
+.previous-meeting .item h4 {
   display: inline-block;
   font-size: 15px;
   margin-bottom: 5px;
   padding-top: 15px;
 }
 
-.other-games .item span {
+.previous-meeting .item span {
   color: #666;
   font-size: 14px;
   display: block;
 }
 
-.other-games ul {
+.previous-meeting ul {
   position: absolute;
   right: 0;
   top: 15px;
 }
 
-.other-games ul li {
+.previous-meeting ul li {
   color: #fff;
   font-size: 14px;
   margin-bottom: 3px;
 }
 
-.other-games ul li:first-child i {
+.previous-meeting ul li:first-child i {
   color: #60ec90;
 }
 
-.other-games ul li:last-child i {
+.previous-meeting ul li:last-child i {
   color: #60ec90;
 }
+
 
 /* 
 ---------------------------------------------
-Top Streamers Style
+Players transfer Style
 --------------------------------------------- 
 */
 
-.top-streamers {
-  border-radius: 23px;
-  background-color: #1f2122;
-  padding: 30px;
-  max-height: 567px;
-  min-height: 567px;
-}
-
-.top-streamers ul li {
-  display: inline-block;
-  width: 100%;
-  border-bottom: 1px solid #353637;
-  margin-bottom: 25px;
-  padding-bottom: 25px;
-}
-
-.top-streamers ul li:last-child {
-  border-bottom: none;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-}
-
-.top-streamers ul li span {
-  float: left;
-  font-size: 15px;
-  color: #fff;
-  font-weight: 700;
-  padding-top: 12px;
-  margin-right: 10px;
-}
-
-.top-streamers ul li h6 {
-  display: inline;
-  font-size: 14px;
-  color: #60ec90;
-  font-weight: 400;
-}
-
-.top-streamers ul li h6 i {
-  color: #fff;
-  background-color: #60ec90;
-  border-radius: 50%;
-  font-size: 12px;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  text-align: center;
-  line-height: 20px;
-  margin-right: 3px;
-}
-
-.top-streamers ul li .main-button {
-  float: right;
-}
-
-.top-streamers ul li .main-button a {
-  padding: 8px 20px;
-}
-
-/* 
----------------------------------------------
-Profile Style
---------------------------------------------- 
-*/
-
-.main-profile {
+.players-transfer {
   border-radius: 23px;
   padding: 30px;
   background-color: #1f2122;
 }
 
-.main-profile .main-info span {
+.players-transfer .main-info span {
   font-size: 14px;
   color: #fff;
   background-color: #5ee75e8d;
@@ -1568,21 +1502,21 @@ Profile Style
   margin-bottom: 15px;
 }
 
-.main-profile .main-info h4 {
+.players-transfer .main-info h4 {
   margin-bottom: 20px;
 }
 
-.main-profile .main-info .main-border-button {
+.players-transfer .main-info .main-border-button {
   margin-top: 25px;
 }
 
-.main-profile ul {
+.players-transfer ul {
   border-radius: 23px;
   padding: 30px;
   background-color: #27292a;
 }
 
-.main-profile ul li {
+.players-transfer ul li {
   width: 100%;
   font-size: 14px;
   color: #666;
@@ -1591,13 +1525,13 @@ Profile Style
   border-bottom: 1px solid #666;
 }
 
-.main-profile ul li span {
+.players-transfer ul li span {
   float: right;
   font-weight: 500;
   color: #60ec90;
 }
 
-.main-profile ul li:last-child {
+.players-transfer ul li:last-child {
   border-bottom: none;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1679,13 +1613,13 @@ body {
   .main-banner h4 {
     font-size: 35px;
   }
-  .gaming-library .item ul li,
-  .gaming-library .item ul li:first-child,
-  .gaming-library .item ul li:last-child {
+  .standings-design .item ul li,
+  .standings-design .item ul li:first-child,
+  .standings-design .item ul li:last-child {
     width: 100% !important;
     text-align: center !important;
   }
-  .gaming-library .item ul li {
+  .standings-design .item ul li {
     margin-top: 30px;
   }
   .top-downloaded ul li .download i {
@@ -1713,7 +1647,7 @@ body {
     max-height: 100%;
     min-height: 100%;
   }
-  .most-popular .item .inner-item {
+  .match-list .item .inner-item {
     margin-bottom: 20px;
   }
 }
@@ -1728,10 +1662,10 @@ body {
   .heading-section h4 {
     font-size: 20px;
   }
-  .gaming-library .item ul li {
+  .standings-design .item ul li {
     width: 48% !important;
   }
-  .gaming-library .item ul li:last-child {
+  .standings-design .item ul li:last-child {
     text-align: left;
   }
   .featured-games {
@@ -1743,7 +1677,7 @@ body {
   .feature-banner .thumb {
     margin-top: 30px;
   }
-  .main-profile .main-info {
+  .players-transfer .main-info {
     margin: 45px 0px;
   }
 }
@@ -1757,7 +1691,7 @@ body {
     margin-right: 30px;
     border-right: none;
   }
-  .gaming-library .item ul li {
+  .standings-design .item ul li {
     width: 16%;
   }
 }

@@ -30,7 +30,7 @@
 
           <!-- ***** Details Start ***** -->
 
-          <div class="game-details">
+          <div class="match-details">
             <div class="row">
               <div class="col-lg-12">
                 <br>
@@ -121,7 +121,7 @@
                     <div class="col-lg-12">
 
                       <!-- ***** Standing Start ***** -->
-                      <div class="gaming-library">
+                      <div class="standings-design">
             <div class="col-lg-12">
               <div class="heading-section">
                 <h4><em>Current</em> Standing</h4>
@@ -145,7 +145,7 @@
 
 
                 <ul>
-                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="eurosport-item"></li>
                   <li><span>{{each.pos}}</span></li>
                   <li><span>{{each.club}}</span></li>
                   <li></li>
@@ -164,7 +164,7 @@
 
 
                 <ul>
-                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="eurosport-item"></li>
                   <li><span>{{each.pos}}</span></li>
                   <li><span>{{each.club}}</span></li>
                   <li></li>
@@ -194,7 +194,7 @@
           <!-- ***** Details End ***** -->
 
           <!-- ***** Other Start ***** -->
-          <div class="other-games">
+          <div class="previous-meeting">
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
@@ -203,7 +203,7 @@
               </div>
               <div class="col-lg-6">
                 <div class="item">
-                  <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
+                  <img src="assets/images/game-01.jpg" alt="" class="eurosport-item">
 
                   {% if prev %}
                   {% for each in prev %}
