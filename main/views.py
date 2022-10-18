@@ -30,7 +30,7 @@ def home(request):
 def played_cl(request):
     queryset = Match.objects.all().filter(played=True).filter(competition='Champions League').order_by('-date')
     matches = paging(1, queryset, request)
-    return render(request, 'all_matches.html', {'matches': matches, 'played': played})
+    return render(request, 'all_matches.html', {'matches': matches, 'played': played, 'queryset':queryset})
 
 def upcoming_cl(request):
     queryset = Match.objects.all().filter(played=False).filter(live=False).filter(competition='Champions League').order_by('-date')
