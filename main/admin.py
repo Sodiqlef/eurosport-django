@@ -2,12 +2,20 @@ from django.contrib import admin
 from main.models import Match, D1Standing, D2Standing,CurrentSeason, News, Transfer
 
 # Register your models here.
-admin.site.register(Match)
-admin.site.register(D1Standing)
-admin.site.register(D2Standing)
+
+def search(val):
+    class SearchAdmin(admin.ModelAdmin):
+        search_fields =val
+    return SearchAdmin
+
+
+
+admin.site.register(Match, search(['home', 'away']))
+admin.site.register(D1Standing, search(['club']))
+admin.site.register(D2Standing, search(['club']))
 admin.site.register(CurrentSeason)
-admin.site.register(News)
-admin.site.register(Transfer)
+admin.site.register(News, search(['subject']))
+admin.site.register(Transfer, search(['player_name']))
 
 
 

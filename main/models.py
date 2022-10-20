@@ -91,6 +91,17 @@ class Transfer(models.Model):
     def __str__(self):
         return  self.player_name
 
+class Club(models.Model):
+    name = models.CharField(max_length=50)
+    players = models.TextField()
+    highest_goal_scorer = models.CharField(max_length=50)
+    current_goals_scored = models.IntegerField()
+    all_goals_scored = models.IntegerField(max_length=50, null=True)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return  self.player_name
+
 
 class CurrentSeason(models.Model):
     current_season = models.IntegerField()

@@ -40,5 +40,6 @@ urlpatterns = [
     path('result/international-matches', views.played_international, name="internationalr"),
     path('fixtures/international-matches', views.upcoming_international, name="internationalf"),
 
-    re_path(r'^match/(?P<pk>\d+)/$', views.match_details, name='match_details')
+    re_path(r'^match/(?P<pk>\d+)/$', views.match_details, name='match_details'),
+    re_path(r'^news/(?P<pk>\d+)/$', views.news_details, name='news_details')
 ]

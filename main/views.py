@@ -22,14 +22,18 @@ def paging(val, queryset, request):
 
 
 def home(request):
-    queryset = Match.objects.all().order_by('-date')
+    queryset_result = Match.objects.all().filter(played=True).order_by('-date')
+    queryset_fixtures = Match.objects.all().filter(played=False).order_by('-date')
+    queryset_live = Match.objects.all().filter(live=True).order_by('-date')
     d1 = D1Standing.objects.all().order_by('pos')
-    matches = paging(4, queryset, request)
-    return render(request, 'index.html', {'matches': matches, 'd1': d1})
+    results = paging(4, queryset_result, request)
+    fixtures = paging(4, queryset_fixtures, request)
+    live = paging(4, queryset_live, request)
+    return render(request, 'index.html', {'results': results, 'fixtures': fixtures, 'd1': d1, 'live': live})
 
 def played_cl(request):
     queryset = Match.objects.all().filter(played=True).filter(competition='Champions League').order_by('-date')
-    matches = paging(1, queryset, request)
+    matches = paging(20, queryset, request)
     return render(request, 'all_matches.html', {'matches': matches, 'played': played, 'queryset':queryset})
 
 def upcoming_cl(request):
@@ -139,5 +143,11 @@ def transfer(request):
 
 
 def news(request):
-    all_news = News.objects.all().order_by('-date')
-    return render(request, 'news.html', {'all_news': all_news})
+    queryset = News.objects.all().order_by('-date')
+    matches = paging(15, queryset, request)
+    return render(request, 'news.html', {'matches': matches})
+
+
+def news_details(request, pk):
+    news = get_object_or_404(News, pk=pk)
+    return render(request, 'news_details.html', {'news': news})

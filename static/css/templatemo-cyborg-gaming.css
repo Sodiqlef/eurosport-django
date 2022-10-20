@@ -35,11 +35,13 @@ figure, header, nav, section, article, aside, footer, figcaption {
 .pre{
   
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 50%;
+    font-size: 100%;
     color: grey;
     padding-top: 10px;
+    
+    
 }
+
 .clearfix:after {
   content: ".";
   display: block;
@@ -876,7 +878,8 @@ Most Popular Style
 }
 
 .match-list .main-button a{
-  padding: 12px 15px;
+  padding-right: 13px ;
+  padding-left: 10px;
 }
 
 /* 
@@ -1169,6 +1172,8 @@ Start Stream Style
   text-align: center;
   margin-top: 30px;
 }
+
+
 
 /* 
 ---------------------------------------------
