@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = 'static/'
-STATICFILES_DIRS = 'static'
+STATICFILES_DIRS = ('static',)
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Default primary key field type
