@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -16,7 +17,8 @@ match_status = (
 
 class Match(models.Model):
     division = models.IntegerField()
-    season = models.IntegerField(null=True)
+    edition = models.IntegerField(null=True)
+    image = CloudinaryField('image', null=True)
     competition = models.CharField(null=True, max_length=100, choices=match_status)
     home = models.CharField(max_length=30)
     away = models.CharField(max_length=30)
@@ -32,20 +34,18 @@ class Match(models.Model):
     played = models.BooleanField(default=False, blank=True)
     live = models.BooleanField(default=False, blank=True)
 
-
-
     class Meta:
         verbose_name_plural = 'Matches'
 
     def __str__(self):
-        verbose = f'{self.home} vs {self.away}'
+        verbose = f'{self.home} vs {self.away} --- {self.edition}'
         return verbose
 
 
 class D1Standing(models.Model):
-    season= models.IntegerField(null=True)
-    pos = models.IntegerField()
+    edition= models.IntegerField(null=True)
     club = models.CharField(max_length=50)
+    image = CloudinaryField('image', null=True)
     mp = models.IntegerField()
     w= models.IntegerField()
     d = models.IntegerField()
@@ -53,13 +53,13 @@ class D1Standing(models.Model):
     pts = models.IntegerField()
 
     def __str__(self):
-        return self.club
+        return f'{self.club} --- {self.edition}'
 
 
 class D2Standing(models.Model):
-    season = models.IntegerField(null=True)
-    pos = models.IntegerField()
+    edition = models.IntegerField(null=True)
     club = models.CharField(max_length=50)
+    image = CloudinaryField('image', null=True)
     mp = models.IntegerField()
     w= models.IntegerField()
     d = models.IntegerField()
@@ -67,12 +67,13 @@ class D2Standing(models.Model):
     pts = models.IntegerField()
 
     def __str__(self):
-        return self.club
+        return f'{self.club} --- {self.edition}'
 
 
 class News(models.Model):
     subject = models.CharField(max_length=1000)
     body = models.TextField()
+    image = CloudinaryField('image', null=True)
     date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -83,6 +84,7 @@ class News(models.Model):
 
 class Transfer(models.Model):
     player_name = models.CharField(max_length=50)
+    image = CloudinaryField('image', null=True)
     transferred_from = models.CharField(max_length=50)
     transferred_to = models.CharField(max_length=50)
     transferred_price = models.CharField(max_length=50, null=True)
@@ -92,6 +94,7 @@ class Transfer(models.Model):
         return  self.player_name
 
 class Club(models.Model):
+    division = models.IntegerField(null=True)
     name = models.CharField(max_length=50)
     players = models.TextField()
     highest_goal_scorer = models.CharField(max_length=50)
@@ -103,11 +106,26 @@ class Club(models.Model):
         return  self.player_name
 
 
-class CurrentSeason(models.Model):
-    current_season = models.IntegerField()
-
-    class Meta:
-        verbose_name_plural = 'Current Season'
+class Player(models.Model):
+    name = models.CharField(max_length=50)
+    club = models.CharField(max_length=50)
+    image = CloudinaryField('image', null=True)
+    current_goals = models.IntegerField(null=True)
+    total_goals = models.IntegerField(null=True)
+    current_assists = models.IntegerField(null=True)
+    total_assists = models.IntegerField(null=True)
+    edition_joined = models.IntegerField(blank=True, null=True)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.current_season)
+        return self.name
+
+
+class Currentedition(models.Model):
+    current_edition = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = 'Current edition'
+
+    def __str__(self):
+        return str(self.current_edition)

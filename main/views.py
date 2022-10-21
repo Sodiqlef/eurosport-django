@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
-from .models import Match, D1Standing, D2Standing, CurrentSeason,Transfer, News
+from .models import Match, D1Standing, D2Standing, Currentedition,Transfer, News, Club, Player
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from  django.db.models import Q
 
 # Create your views here.
 
@@ -25,7 +26,7 @@ def home(request):
     queryset_result = Match.objects.all().filter(played=True).order_by('-date')
     queryset_fixtures = Match.objects.all().filter(played=False).order_by('-date')
     queryset_live = Match.objects.all().filter(live=True).order_by('-date')
-    d1 = D1Standing.objects.all().order_by('pos')
+    d1 = D1Standing.objects.all().order_by('-pts')
     results = paging(4, queryset_result, request)
     fixtures = paging(4, queryset_fixtures, request)
     live = paging(4, queryset_live, request)
@@ -113,8 +114,8 @@ def upcoming_international(request):
 
 def match_details(request, pk):
     match = get_object_or_404(Match, pk=pk)
-    home_standing = D1Standing.objects.all().filter(club=match.home).filter(season=match.season)
-    away_standing = D1Standing.objects.all().filter(club=match.away).filter(season=match.season)
+    home_standing = D1Standing.objects.all().filter(club=match.home).filter(edition=match.edition)
+    away_standing = D1Standing.objects.all().filter(club=match.away).filter(edition=match.edition)
     prev = Match.objects.all().filter(home=match.home).filter(away=match.away).filter(played=True).order_by('-date')
     return render(request, 'details.html', {
         'match': match, 'prev': prev, 'home_standing': home_standing, 'away_standing': away_standing
@@ -122,20 +123,53 @@ def match_details(request, pk):
 
 
 def standings(request):
-    current_season = CurrentSeason.objects.all()
-    for currents in current_season:
-        current = currents.current_season
-        d1 = D1Standing.objects.all().order_by('pos')
-        d2 = D2Standing.objects.all().order_by('pos')
-        return render(request, 'standings.html', {'d1': d1, 'd2': d2, 'current':current})
+    current_edition = Currentedition.objects.all()
+    prev_edition = Currentedition.objects.last()
+    prev = range(prev_edition.current_edition)
+    search = request.GET.get('prevStandings')
+    search2 = request.GET.get('prevStandings2')
+    for currents in current_edition:
+        current = currents.current_edition
+        smth = current-1
+        if search2:
+            d1 = D1Standing.objects.filter(Q(edition__icontains=search)).order_by('-pts')
+            d2 = D2Standing.objects.filter(Q(edition__icontains=search2)).order_by('-pts')
+        else:
+            d1 = D1Standing.objects.all().order_by('-pts')
+            d2 = D2Standing.objects.all().order_by('-pts')
+        return render(request, 'standings.html', {'d1': d1, 'd2': d2, 'current':current, 'prev': prev, 'smth': smth})
 
-def prev_standings(request):
-    current_season = CurrentSeason.objects.all()
-    for currents in current_season:
-        current = currents.current_season
-        d1 = D1Standing.objects.all().order_by('pos')
-        d2 = D2Standing.objects.all().order_by('pos')
-        return render(request, 'standings.html', {'d1': d1, 'd2': d2, 'current':current})
+def d1_prev_standings(request):
+    current_edition = Currentedition.objects.all()
+    prev_edition = Currentedition.objects.last()
+    prev = range(prev_edition.current_edition)
+    search = request.GET.get('prevStandings')
+    div = 1
+    if search:
+        d = D1Standing.objects.filter(Q(edition__icontains=search)).order_by('-pts')
+    else:
+        d = D1Standing.objects.all().order_by('-pts')
+    for currents in current_edition:
+        current = currents.current_edition
+        smth = current-1
+        return render(request, 'prev_standings.html', {'d': d, 'div':div, 'prev': prev, 'smth': smth, 'search':search})
+
+def d2_prev_standings(request):
+    current_edition = Currentedition.objects.all()
+    prev_edition = Currentedition.objects.last()
+    prev = range(prev_edition.current_edition)
+    search2 = request.GET.get('prevStandings2')
+    div = 2
+    if search2:
+        d = D1Standing.objects.filter(Q(edition__icontains=search2)).order_by('-pts')
+    else:
+        d = D2Standing.objects.all().order_by('-pts')
+    for currents in current_edition:
+        current = currents.current_edition
+        smth = current-1
+        return render(request, 'prev_standings.html', {'d': d, 'div':div, 'prev': prev, 'smth': smth, 'search2':search2})
+
+
 
 def transfer(request):
     all_transfer = Transfer.objects.all().order_by('-transferred_date')
@@ -151,3 +185,24 @@ def news(request):
 def news_details(request, pk):
     news = get_object_or_404(News, pk=pk)
     return render(request, 'news_details.html', {'news': news})
+
+
+def club(request):
+    clubs = Club.objects.all().order_by('-division')
+    return render(request, 'club_details.html', {'clubs': clubs})
+
+def club_details(request, pk):
+    clubs = get_object_or_404(Club, pk=pk)
+    return render(request, 'club_details.html', {'clubs': clubs})
+
+
+def player(request):
+    search = request.GET.get('players')
+    if search:
+        queryset = Player.objects.filter(Q(name__icontains=search)).order_by('-name')
+        players = paging(20, queryset, request)
+    else:
+        queryset = Player.objects.all().order_by('-name')
+        players = paging(20, queryset, request)
+
+    return render(request, 'players.html', {'players': players, 'matches': players})

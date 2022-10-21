@@ -36,7 +36,7 @@
                 <br>
                 <h4 >
                     <div 	class="d-lg-none d-xl-none d-xl-block" >
-                  <img src="{% static 'images/details-02.jpg' %}" alt="" style="border-radius: 23px;">
+                  <img src="{{match.image.url}}" alt="" style="border-radius: 23px;">
                     </div>
                   <i style="float:left; padding-left: 5%">{{match.home|title}}
                     {% if match.played or match.live %}
@@ -107,7 +107,7 @@
 
                   <p style="color: #aaa; padding-left: 5%; border-bottom: 1px solid grey;">Kick-off time: {{match.date.date}} {{match.date.time}}</p>
                   <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">Stadium: Eurosport Stadium</p>
-                  <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">Season: {{match.season}}</p>
+                  <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">edition: {{match.edition}}</p>
                   <p style="color: #aaa; padding-left: 5%;  border-bottom: 1px solid grey;">Competition: {{match.competition}}</p>
                   <p style="color: #aaa; padding-left: 5%;  ">{% if match.played or match.live %}Man of the match: {{match.mom}} {% endif %}</p>
                   <br>
@@ -146,7 +146,7 @@
 
                 <ul>
                   <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="eurosport-item"></li>
-                  <li><span>{{each.pos}}</span></li>
+                  <li><span>{{forloop.counter}}</span></li>
                   <li><span>{{each.club}}</span></li>
                   <li></li>
                   <li><span>{{each.mp}}</span></li>
@@ -165,7 +165,7 @@
 
                 <ul>
                   <li><img src="{% static 'images/game-01.jpg' %}" alt="" class="eurosport-item"></li>
-                  <li><span>{{each.pos}}</span></li>
+                  <li><span>{{forloop.counter}}</span></li>
                   <li><span>{{each.club}}</span></li>
                   <li></li>
                   <li><span>{{each.mp}}</span></li>

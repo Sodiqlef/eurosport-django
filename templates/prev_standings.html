@@ -1,0 +1,102 @@
+  {% extends 'base.html' %}
+{% load static %}
+
+
+  {% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h6>Welcome To Eurosport</h6>
+                  <h4><em>Check</em> all updated Standings Here</h4>
+                  <div class="main-button">
+                    <a href="#d1">Division {{div}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+
+
+          <!-- ***** League Table Start ***** -->
+          <div class="standings-design">
+            <div class="col-lg-12">
+              <div class="heading-section" id="d{{div}}">
+                <h4><em>Division {{div}}</em> League Table</h4>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><h4></h4></li>
+                  <li><h4>Pos</h4></li>
+                  <li><h4>Club</h4></li>
+                  <li></li>
+                  <li><h4>Mp</h4></li>
+                  <li><h4>W</h4></li>
+                  <li><h4>D</h4></li>
+                  <li><h4>L</h4></li>
+                  <li><h4>Pts</h4></li>
+
+                </ul>
+              </div>
+              {% for each in d %}
+              <div class="item">
+
+
+                <ul>
+                  <li><img src="{{each.image.url}}"  alt="" class="eurosport-item"></li>
+                  <li><span>{{forloop.counter}}</span></li>
+                  <li><span>{{each.club}}</span></li>
+                  <li></li>
+                  <li><span>{{each.mp}}</span></li>
+                  <li><span>{{each.w}}</span></li>
+                 <li><span>{{each.d}}</span></li>
+                  <li><span>{{each.l}}</span></li>
+                  <li><span>{{each.pts}}</span></li>
+                </ul>
+
+              </div>
+              {% endfor %}
+
+            <div class="col-lg-12">
+
+                    <!-- ***** Search begin ***** -->
+              <div class="main-button">
+                <form id="search" {% if div == 1 %} action="{% url 'prev1_standings' %}" {% else %} action="{% url 'prev2_standings' %}" {% endif %}>
+                        <select name="prevStandings" id="prevStandings" >
+                          <option value="{{smth|add:'1'}}"></option>
+                          {% for all in prev %}
+                          {% if smth == all %}
+                           <option value="{{all | add:'1'}}">Current Edition</option>
+                          {% else %}
+                         <option value="{{all | add:'1'}}">Edition {{all | add:'1'}}</option>
+                          {% endif %}
+
+
+                          {% endfor %}
+                        </select>
+
+                  <button type="submit" >Search previous season</button>
+                      </form>
+
+              </div>
+              <!-- **** search end ***** -->
+            </div>
+          </div>
+          <!-- ***** Gaming Library End ***** -->
+        </div>
+          <!-- ***** League Table End ***** -->
+      </div>
+    </div>
+  </div>
+</div>
+
+  {% endblock %}

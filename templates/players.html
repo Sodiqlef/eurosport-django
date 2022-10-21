@@ -1,0 +1,65 @@
+  {% extends 'base.html' %}
+{% load static %}
+
+
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <form id="search" action="{% url 'player' %}">
+               <div class="main-button">
+                 <input type="text" name="players" >
+               <button type="submit">Search Players</button>
+               </div>
+
+             </form>
+
+          <!-- ***** Banner Start ***** -->
+          <div class="row">
+
+            {% for player in players %}
+            <div class="col-lg-12" style="padding-bottom: 10px">
+
+
+              <div class="players-transfer ">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <img src="{{player.image.url}}"  alt="" style="border-radius: 23px;">
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <div class="main-info header-text">
+                      <h4>{{player.name| upper}}</h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <ul>
+                      <li>Club <span>{{player.club | capfirst}}</span></li>
+                      <li>Current Goals Scored <span> {{player.current_goals}} </span></li>
+                      <li> Total Goals Scored<span>{{player.total_goals}}</span></li>
+                        <li>Current Assists <span>{{player.current_assists}}</span></li>
+                      <li> Total Assists<span>{{player.total_assists}}</span></li>
+                      {% if player.edition_joined %}
+                      <li> edition Joined<span>{{player.edition_joined}}</span></li>
+                      {% endif %}
+
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            {% endfor %}
+          </div>
+          <div class="main-button">
+            {% include 'pagination.html' %}
+          </div>
+          <!-- ***** Banner End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

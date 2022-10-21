@@ -34,6 +34,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='currentseason',
-            options={'verbose_name_plural': 'Current Season'},
+            options={'verbose_name_plural': 'Current season'},
         ),
     ]

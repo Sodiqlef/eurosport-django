@@ -21,7 +21,7 @@
 
                   <div class="col-lg-3 col-sm-6">
                     <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
-                      <img src="{% static 'images/popular-01.jpg' %}" alt="">
+                      <img src="{{match.image.url}}" style="width: 200px; height: 200px;" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
                       <ul>
                         <li></i> {{match.date.date}}</li>
