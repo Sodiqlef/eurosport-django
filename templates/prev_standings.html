@@ -35,14 +35,21 @@
               </div>
               <div class="item">
                 <ul>
-                  <li><h4></h4></li>
-                  <li><h4>Pos</h4></li>
-                  <li><h4>Club</h4></li>
                   <li></li>
-                  <li><h4>Mp</h4></li>
+                  <li></li>
+                  <li><h4>Pos</h4></li>
+                  <li></li>
+                  <li class="col-1 d-lg-none"><h4>Club</h4></li>
+                  <li class="col-lg-1  d-md-none d-sm-none d-none d-lg-block "><h4>Club</h4></li>
+                  <li></li>
+                  <li ><h4>Mp</h4></li>
+                  <li></li>
                   <li><h4>W</h4></li>
+                  <li></li>
                   <li><h4>D</h4></li>
+                  <li></li>
                   <li><h4>L</h4></li>
+                  <li></li>
                   <li><h4>Pts</h4></li>
 
                 </ul>
@@ -52,14 +59,20 @@
 
 
                 <ul>
-                  <li><img src="{{each.image.url}}"  alt="" class="eurosport-item"></li>
+                  <li><img src="{{each.image.url}}" alt="" class="eurosport-item"></li>
+                  <li></li>
                   <li><span>{{forloop.counter}}</span></li>
-                  <li><span>{{each.club}}</span></li>
+                  <li  class="col-1 d-lg-none"><span>{{each.club}}</span></li>
+                  <li  class="col-lg-1  d-md-none d-sm-none d-none d-lg-block d-xl-block"><span>{{each.club}}</span></li>
                   <li></li>
                   <li><span>{{each.mp}}</span></li>
+                  <li></li>
                   <li><span>{{each.w}}</span></li>
+                  <li></li>
                  <li><span>{{each.d}}</span></li>
+                  <li></li>
                   <li><span>{{each.l}}</span></li>
+                  <li></li>
                   <li><span>{{each.pts}}</span></li>
                 </ul>
 
@@ -84,7 +97,7 @@
                           {% endfor %}
                         </select>
 
-                  <button type="submit" >Search previous season</button>
+                  <button type="submit" >Search previous</button>
                       </form>
 
               </div>

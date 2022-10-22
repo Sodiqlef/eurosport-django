@@ -27,22 +27,24 @@
 
           <!-- ***** Live Matches Start ***** -->
 
-
+          <span class="text-light">Click on each match to expand details</span>
 
           <div class="match-list">
+            
             <div class="row">
               <a class="col-lg-12">
+                
                 <div class="heading-section">
                   <h4><em>Live</em> match</h4>
                 </div>
-
+                
                 <div class="row">
                   {% for match in live %}
                   <div class="col-lg-3 col-sm-6">
 
                     <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
 
-                      <img src="{{match.image.url}}" style="width: 200px; height: 200px;" alt="">
+                      <img src="{{match.image.url}}" style="width: 100%; height: 100%; object-fit: contain;" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
                       <ul>
                         <li></i> {{match.home_goal}}</li>
@@ -78,7 +80,7 @@
 
                   <div class="col-lg-3 col-sm-6">
                     <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
-                      <img src="{{match.image.url}}" style="width: 200px; height: 200px;" alt="">
+                      <img src="{{match.image.url}}" style="width: 100%; height: 100%; object-fit: contain;" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
                       <ul>
                         <li></i> {{match.date.date}}</li>
@@ -126,7 +128,7 @@
 
                   <div class="col-lg-3 col-sm-6">
                     <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
-                      <img src="{{match.image.url}}" style="width: 200px; height: 200px;" alt="">
+                      <img src="{{match.image.url}}" style="width: 100%; height: 100%; object-fit: contain;" alt="">
                       <h4 style="font-size: 110%">{{match.home| capfirst}}<br>{{match.away| capfirst}}</h4>
                       <ul>
                         <li></i> {{match.home_goal}}</li>
@@ -156,20 +158,29 @@
 
           <!-- ***** League Table Start ***** -->
           <div class="standings-design">
+
             <div class="col-lg-12">
               <div class="heading-section">
                 <h4><em>Division 1</em> League Table</h4>
               </div>
+
               <div class="item">
                 <ul>
-                  <li><h4></h4></li>
-                  <li><h4>Pos</h4></li>
-                  <li><h4>Club</h4></li>
                   <li></li>
-                  <li><h4>Mp</h4></li>
+                  <li></li>
+                  <li><h4>Pos</h4></li>
+                  <li></li>
+                  <li class="col-1 d-lg-none"><h4>Club</h4></li>
+                  <li class="col-lg-1  d-md-none d-sm-none d-none d-lg-block "><h4>Club</h4></li>
+                  <li></li>
+                  <li ><h4>Mp</h4></li>
+                  <li></li>
                   <li><h4>W</h4></li>
+                  <li></li>
                   <li><h4>D</h4></li>
+                  <li></li>
                   <li><h4>L</h4></li>
+                  <li></li>
                   <li><h4>Pts</h4></li>
 
                 </ul>
@@ -180,13 +191,19 @@
 
                 <ul>
                   <li><img src="{{each.image.url}}" alt="" class="eurosport-item"></li>
+                  <li></li>
                   <li><span>{{forloop.counter}}</span></li>
-                  <li><span>{{each.club}}</span></li>
+                  <li  class="col-1 d-lg-none"><span>{{each.club}}</span></li>
+                  <li  class="col-lg-1  d-md-none d-sm-none d-none d-lg-block d-xl-block"><span>{{each.club}}</span></li>
                   <li></li>
                   <li><span>{{each.mp}}</span></li>
+                  <li></li>
                   <li><span>{{each.w}}</span></li>
+                  <li></li>
                  <li><span>{{each.d}}</span></li>
+                  <li></li>
                   <li><span>{{each.l}}</span></li>
+                  <li></li>
                   <li><span>{{each.pts}}</span></li>
                 </ul>
 
