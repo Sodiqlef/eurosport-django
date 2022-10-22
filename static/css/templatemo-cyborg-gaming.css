@@ -175,6 +175,7 @@ p {
 
 .main-button select, input {
   font-size: 14px;
+  width: 90px;
   color: #fff;
   background-color: grey;
   padding: 6px 10px;
@@ -221,8 +222,9 @@ p {
   color: #666;
 }
 .eurologo{
-  color: #60ec90;
-  font-family:'algerian' ;
+  color: #50db80;
+  font-family:'algeria' ;
+  font-weight: bolder;
 }
 
 .border-no-active a:hover{
@@ -831,7 +833,7 @@ Most Popular Style
 .match-list {
   margin-top: 60px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: #555;
   border-radius: 23px;
 }
 
@@ -907,6 +909,7 @@ standings design Style
 .standings-design {
   margin-top: 15px;
   padding: 10px;
+  padding-bottom: 40px;
   background-color: #1f2122;
   border-radius: 23px;
 }

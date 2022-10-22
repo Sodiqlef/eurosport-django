@@ -27,8 +27,11 @@
 
           <!-- ***** Live Matches Start ***** -->
 
-          <span class="text-light">Click on each match to expand details</span>
 
+          <span class="text-light" style="font-size: 85%;">Click on each match to expand details</span>
+
+          {% for match in live %}
+          <fieldset>
           <div class="match-list">
             
             <div class="row">
@@ -39,7 +42,6 @@
                 </div>
                 
                 <div class="row">
-                  {% for match in live %}
                   <div class="col-lg-3 col-sm-6">
 
                     <a href="{% url 'match_details' match.pk %}?{{match.home}}vs{{match.away}}"><div class="item">
@@ -54,11 +56,13 @@
                     </div></a>
                   </div>
 
-{% endfor %}
+
                 </div>
               </a>
               </div>
             </div>
+            </fieldset>
+          {% endfor %}
           </div>
 
 
@@ -67,6 +71,7 @@
 
 
           <!-- ***** Upcoming Matches Start ***** -->
+
           <div class="match-list">
             <div class="row">
               <div class="col-lg-12">
@@ -111,6 +116,7 @@
               </div>
             </div>
           </div>
+          </fieldset>
           <!-- ***** upcoming Matches End ***** -->
 
 
