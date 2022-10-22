@@ -4,6 +4,4 @@ __pycache__/
 venv/
 
 
-# SQLite database files
-
-*.sqlite3
+# SQLite database fi
